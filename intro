@@ -1,0 +1,5 @@
+To automate tasks usually use scripts that requires coding skills, high maintanance a lot of time to put those scripts together. 
+Ansible comes to help to automate many tasks (even complex deployments), can use in the cloud or local, etc
+Ansible use playbooks 
+https://docs.ansible.com/
+
