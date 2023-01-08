@@ -40,6 +40,11 @@ web_servers
 db_servers
 
 
+dynamic inventory
+specify -i parameter        
+static you specify a file      ansible-playbook -i inventory.txt playbook.yaml
+dynmaic you specify a script   ansible-playbook -i inventory.py playbook.yaml
+
 ==================== Playbooks ===============================
 It is Ansible's orchestration language
 where we define what we want Ansible to do
