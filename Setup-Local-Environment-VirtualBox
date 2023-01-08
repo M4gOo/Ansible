@@ -1,0 +1,13 @@
+Download OS from this web page
+https://www.osboxes.org/
+
+#
+Then create from this image (hard disk)
+adjust memory 2GB
+adjust processor 2 CPU
+Network section attached to Bridged Adapter (VM gets an IP address and can connect to internet as well)
+Power on the VM and get the IP (enp0s3: inet <IP>)
+Using a teminal MobaXterm (could be PuTTy)
+
+#
+Making clones from the previous VM
