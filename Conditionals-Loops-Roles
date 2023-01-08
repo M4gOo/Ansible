@@ -19,3 +19,30 @@ loop: '{{ packages }}'
 
 
 Can use register to save the output and use further in the playbook
+
+==================== Loops ===============================
+avoid repeating lines
+
+tasks
+  -user: name='{{ item }}  state=present
+  loop:      (could be -> with_items:)
+    - klooop
+    - manuer
+    - zac
+    - ibra
+    
+
+double variable
+tasks
+  -user: name= '{{ item.name }}'  state=present uid= '{{ item.uid }}'
+  loop:    (could be -> with_items:)
+    - name: klooop
+      uid: 1010
+    - name: manuer
+      uid: 1011
+    - name: zac
+      uid: 1012
+      
+
+==================== Roles ===============================
+    
