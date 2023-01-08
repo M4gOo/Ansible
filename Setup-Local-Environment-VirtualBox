@@ -11,3 +11,21 @@ Using a teminal MobaXterm (could be PuTTy)
 
 #
 Making clones from the previous VM
+Give a name for ansible controller and in the MAC add. policy select to generate new MAC addr
+Make sure the path is the same as the previous VM
+Clone type: select Linked clone (this is to save space)
+Make two VM ansible-controller and ansible-target1
+Set up both in the terminal MobaXterm and log in via SSH
+Change the localhost (in ansible controller and target) in /etc/hostname -> ansiblecontroller
+                                                          /etc/hosts -> 127.0.0.1   localhost ansiblecontroller
+                                                                        ::1         localhost ansiblecontroller
+Then restart the system -> shutdown now -r
+
+Next Step - Install Ansible in ansible-controller
+https://docs.ansible.com/ansible/latest/installation_guide/index.html    ->  chose the OS  
+sudo yum install ansible  
+Gave me an Error (centos7) -> Loading mirror speeds from cached hostfile * base: anorien.csc.warwick.ac.uk * extras: mirrors.vinters.com * updates: mirror.bytemark.co.uk No package ansible available.
+    Troubleshooting -> sudo yum install epel-release
+                    -> sudo yum repolist
+                    -> sudo yum install ansible
+                    
