@@ -69,4 +69,26 @@ to run the playbook -> ansible-playbook playbook-file-name.yaml
 for additional parameters -> ansible-playbook --help
 
 
+==================== Modules ===============================
+Based on in your functionality
+system -   actions to be performed at a system level
+commands - execute command or scripts on a host - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#parameters
+files -    help to work with files
+database - help work with databases such as MySQL, MongoDB, Postgresql
+cloud -    many modules for each cloud provider and more
+windows -  help use Ansible in a windows environment
+more...
+
+in commands modules
+free_form are commands they doesn't require you specify key=value format to the command to run
+
+script module - executers a script which is located locally on the Ansible controller machine.
+              - to run a script on one or hundreds of servers, Ansible does the copy automatically and execute on the remote systems
+
+service module - (idempotency) do Started instead Start. If the service is no already started Ansible will start, but if it is already started won't do anything
+
+lineinfile - search for a line in a file and replace it or add it if doesnt exist. For example, if you use a script to add a line in DNS file it will add everytime, with ansbile only once, 
+because it will check if that entry is already there
+
+
 
