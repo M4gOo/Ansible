@@ -12,3 +12,61 @@ ansible_host        -> IP or FQDN(domain name)
 ansible_connection  -> how is connect to target server ssh or winrm
 ansible_port        -> port will be connected
 ansible_user        -> defines the user used to make remote connections
+ansible_password (win)
+ansible_ssh_pass (linux)
+
+#
+To create groups:
+[web_servers]
+web1
+web2
+web3
+
+[db_servers]
+db1
+
+#
+To create group of groups:
+[web_servers]
+web1
+web2
+web3
+
+[db_servers]
+db1
+
+[all_servers:children]
+web_servers
+db_servers
+
+
+==================== Playbooks ===============================
+It is Ansible's orchestration language
+where we define what we want Ansible to do
+They are written in yaml format
+it is a list of dictionaries in YAML
+
+in the playbooks all connection info for the host is retrieved from inventory file.
+    if specify a group in hosts inside the playbook, the listed tasks will be executed on all the hosts listed under that group simultaneously
+Ex.:
+-
+    name: 'Execute two commands on web_node1'
+    hosts: boston_nodes
+    tasks:
+        -
+            name: 'Execute a date command'
+            command: date
+        -
+            name: 'Execute a command to display hosts file'
+            command: 'cat /etc/hosts'
+
+
+the different actions run by tasks are called modules (command, script, yum, service and others 100s)
+ansible-doc -l
+https://docs.ansible.com/ansible/2.9/modules/list_of_all_modules.html
+
+to run the playbook -> ansible-playbook playbook-file-name.yaml
+for additional parameters -> ansible-playbook --help
+
+
+
