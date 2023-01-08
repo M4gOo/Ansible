@@ -1,0 +1,21 @@
+==================== Conditionals ===============================
+Some server has different server with that we can use a conditional which the playbook will run the appropriate task
+when: condition ; or ; and ; == ; 
+Ex.: when: ansible_os_family == "Debian"
+
+Can use conditionals in loop.
+vars:
+  packages:
+    -name: nginx
+    required: true
+    -name: mysql
+    required: true
+tasks
+-name : Install "{{ item.name }}" on Debian
+   apt:
+      name: "{{ item.name }}"
+when item.required == True   
+loop: '{{ packages }}'
+
+
+Can use register to save the output and use further in the playbook
