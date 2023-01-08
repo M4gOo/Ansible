@@ -45,4 +45,32 @@ tasks
       
 
 ==================== Roles ===============================
+assign server with a role must need all requisites to make, for example, a mysql (install packages, configure mysql service, configure DB and users)
+
+Roles can re-use your configuration
+to install and configure basics configurations you can package it into a role and reuse it later, because this task remain mostly common.
+
+in the playbook it will be
+roles:
+  -mysql
+  
+ 
+ Roles can help organize all taks into a task directory
+ Roles can help in sharing your code with others in the Ansible Community (Ansible Galaxy)
+ ansiible-galaxy search mysql
+ ansiible-galaxy install nameoftheguy.mysql
+ ansiible-galaxy install nameoftheguy.mysql -p ./roles   (to install in the current dir under roles)
+ ansiible-galaxy list
+ ansiible-galaxy dump | grep mysql
+  
+ To start with the role use the ansible galaxy command, this tool will initialize and create a directory structure
+ ansible-galaxy init mysql
+ 
+ then move all of your code into the task directory into a file and that's it
+ 
+ If I have my playbook and want to use a role that ansaible-galaxy initialize I can
+        -> move everything ansible-galaxy dir under my-playbook>roles>mysql
+        -> move the roles in this default Ansible location /etc/ansible/roles
+        -> configure in /etc/ansible/ansible.cfg the path for the roles
+
     
