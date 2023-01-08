@@ -1,0 +1,14 @@
+
+==================== Inventory ===============================
+it is agentless, dont need install additional software on the target machines to work with Ansible
+it is required to configure an agent on the target system before using any kind of automation
+information about these target systems is stored in an INVENTORY FILE (INI format). If you dont creatte one, Ansible will use the default (/etc/ansible/hosts)
+
+create an alias  -> web ansible_host=192.0.2.50.
+                 -> db ansible_host=server3.company.com 
+In case doesnt have other host you can use -> localhost ansible_connection=localhost    
+    
+ansible_host        -> IP or FQDN(domain name)
+ansible_connection  -> how is connect to target server ssh or winrm
+ansible_port        -> port will be connected
+ansible_user        -> defines the user used to make remote connections
