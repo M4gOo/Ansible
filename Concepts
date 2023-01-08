@@ -82,13 +82,41 @@ more...
 in commands modules
 free_form are commands they doesn't require you specify key=value format to the command to run
 
-script module - executers a script which is located locally on the Ansible controller machine.
+script module - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html
+              - executers a script which is located locally on the Ansible controller machine.
               - to run a script on one or hundreds of servers, Ansible does the copy automatically and execute on the remote systems
 
 service module - (idempotency) do Started instead Start. If the service is no already started Ansible will start, but if it is already started won't do anything
+               - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html 
 
 lineinfile - search for a line in a file and replace it or add it if doesnt exist. For example, if you use a script to add a line in DNS file it will add everytime, with ansbile only once, 
 because it will check if that entry is already there
 
 
+==================== Variables ===============================
+Can add variable inside the file like playbook, inventory, variables 
+Instead of to hard code some configurations, use variable inside double {} ( Jinja2 Templating) ->  '{{ variable_name }}' 
+                                                                                                ->   Something{{ variable_name }}anotherthing  
+Those variables inside {{}} can be store in the inventory file, but a better way is in a variable file with the name of specific host (.yaml)
+Ex.: the argument hosts inside the playbook can be named web and the variable file name called web.yaml
 
+inventory file
+localhost ansible_connection=localhost nameserver_ip=10.1.250.10 snmp_port=160-161
+playbook
+-
+    name: 'Update nameserver entry into resolv.conf file on localhost'
+    hosts: localhost
+    tasks:
+        -
+            name: 'Update nameserver entry into resolv.conf file'
+            lineinfile:
+                path: /etc/resolv.conf
+                line: 'nameserver {{ nameserver_ip }}'
+        -
+            name: 'Disable SNMP Port'
+            firewalld:
+                port: '{{ snmp_port }}'
+                permanent: true
+                
+              
+ 
