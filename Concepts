@@ -99,6 +99,8 @@ because it will check if that entry is already there
 
 
 ==================== Variables ===============================
+https://ansible-docs.readthedocs.io/zh/stable-2.0/rst/playbooks_variables.html
+
 Can add variable inside the file like playbook, inventory, variables 
 Instead of to hard code some configurations, use variable inside double {} ( Jinja2 Templating) ->  '{{ variable_name }}' 
                                                                                                 ->   Something{{ variable_name }}anotherthing  
