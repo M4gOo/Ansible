@@ -121,9 +121,22 @@ playbook
                 line: 'nameserver {{ nameserver_ip }}'
         -
             name: 'Disable SNMP Port'
+            
+            
             firewalld:
                 port: '{{ snmp_port }}'
                 permanent: true
                 
               
+ ==================== Vault ===============================
+ It is a feature that allows you to keep sensitive data encrypted rather than plaintext in playbooks/roles.
+ commands
+        create
+        view
+        edit
+        encrypt
+        decrypt
+        --ask-vault-pass: provide password while running playbook
+        --vault-password-file: to pass a vault password through a file
+        
  
